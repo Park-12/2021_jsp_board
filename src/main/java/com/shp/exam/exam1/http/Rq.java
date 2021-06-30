@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shp.exam.exam1.util.Ut;
+
 public class Rq {
 	private HttpServletRequest req;
 	private HttpServletResponse resp;
@@ -92,12 +94,12 @@ public class Rq {
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public String getParam(String paramName, String defaultValue) {
 		String paramValue = req.getParameter(paramName);
-		
+
 		if (paramValue == null) {
 			return defaultValue;
 		}
@@ -105,6 +107,13 @@ public class Rq {
 	}
 
 	public void printf(String format, Object... args) {
-		print(String.format(format, args));
+		print(Ut.f(format, args));
+	}
+
+	public void historyBack(String msg) {
+		println("<script>");
+		printf("alert('%s');\n", msg);
+		println("history.back();");
+		println("</script>");
 	}
 }
