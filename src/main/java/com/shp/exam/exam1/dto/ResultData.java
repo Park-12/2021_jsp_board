@@ -4,25 +4,20 @@ import java.util.Map;
 
 import com.shp.exam.exam1.util.Ut;
 
+import lombok.Getter;
+
 public class ResultData {
+	@Getter
 	private String msg;
+	@Getter
 	private String resultCode;
+	@Getter
 	private Map<String, Object> body;
 	
-	
-
-	public String getMsg() {
-		return msg;
+	private ResultData() {
+		
 	}
 
-	public String getResultCode() {
-		return resultCode;
-	}
-
-	public Map<String, Object> getBody() {
-		return body;
-	}
-	
 	public boolean isSuccess() {
 		return resultCode.startsWith("S-1");
 	}

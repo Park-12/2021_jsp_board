@@ -10,12 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shp.exam.exam1.util.Ut;
 
+import lombok.Getter;
+import lombok.ToString;
+
+@ToString
 public class Rq {
 	private HttpServletRequest req;
 	private HttpServletResponse resp;
+	@Getter
 	private boolean isInvalid = false; // Invalid 유효하지 X
+	@Getter
 	private String controllerTypeName;
+	@Getter
 	private String controllerName;
+	@Getter
 	private String actionMethodName;
 
 	public Rq(HttpServletRequest req, HttpServletResponse resp) {
@@ -52,26 +60,6 @@ public class Rq {
 		this.controllerTypeName = requestUriBits[controllerTypeNameIndex];
 		this.controllerName = requestUriBits[controllerNameIndex];
 		this.actionMethodName = requestUriBits[actionMethodNameIndex];
-	}
-
-	public HttpServletRequest getReq() {
-		return req;
-	}
-
-	public boolean isInvalid() {
-		return isInvalid;
-	}
-
-	public String getControllerTypeName() {
-		return controllerTypeName;
-	}
-
-	public String getControllerName() {
-		return controllerName;
-	}
-
-	public String getActionMethodName() {
-		return actionMethodName;
 	}
 
 	public void print(String str) {
