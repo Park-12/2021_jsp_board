@@ -1,18 +1,15 @@
-package com.shp.exam.exam1.http.service;
+package com.shp.exam.exam1.service;
 
 import java.util.List;
 
+import com.shp.exam.exam1.container.Container;
 import com.shp.exam.exam1.dto.Article;
 import com.shp.exam.exam1.dto.ResultData;
-import com.shp.exam.exam1.http.repository.ArticleRepository;
+import com.shp.exam.exam1.repository.ArticleRepository;
 import com.shp.exam.exam1.util.Ut;
 
 public class ArticleService {
-	private ArticleRepository articleRepository;
-	
-	public ArticleService() {
-		articleRepository = new ArticleRepository();
-	}
+	private ArticleRepository articleRepository = Container.articleRepository;
 
 	public ResultData write(String title, String body) {
 		int id = articleRepository.write(title, body);
