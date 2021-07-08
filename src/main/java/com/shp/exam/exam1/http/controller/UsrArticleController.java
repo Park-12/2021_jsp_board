@@ -1,5 +1,8 @@
 package com.shp.exam.exam1.http.controller;
 
+import java.util.List;
+
+import com.shp.exam.exam1.dto.Article;
 import com.shp.exam.exam1.dto.ResultData;
 import com.shp.exam.exam1.http.Rq;
 import com.shp.exam.exam1.http.service.ArticleService;
@@ -14,6 +17,9 @@ public class UsrArticleController extends Controller {
 	@Override
 	public void performAction(Rq rq) {
 		switch (rq.getActionMethodName()) {
+		case "list":
+			actionShowList(rq);
+			break;
 		case "write":
 			actionShowWrite(rq);
 			break;
@@ -21,6 +27,14 @@ public class UsrArticleController extends Controller {
 			actionDoWrite(rq);
 			break;
 		}
+	}
+
+	private void actionShowList(Rq rq) {
+		List<Article> articles = articleService.getForPrintArticles();
+		
+		rq.setAttr("articles", articles);
+		
+		rq.jsp("usr/article/list");
 	}
 
 	private void actionDoWrite(Rq rq) {

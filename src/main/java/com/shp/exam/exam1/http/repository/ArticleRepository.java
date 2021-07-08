@@ -1,5 +1,8 @@
 package com.shp.exam.exam1.http.repository;
 
+import java.util.List;
+
+import com.shp.exam.exam1.dto.Article;
 import com.shp.mysqlutil.MysqlUtil;
 import com.shp.mysqlutil.SecSql;
 
@@ -15,5 +18,14 @@ public class ArticleRepository {
 		int id = MysqlUtil.insert(sql);
 		
 		return id;
+	}
+
+	public List<Article> getForPrintArticles() {
+		SecSql sql = new SecSql();
+		sql.append("SELECT A.*");
+		sql.append("FROM article AS A");
+		sql.append("ORDER BY id DESC");
+		
+		return MysqlUtil.selectRows(sql, Article.class);
 	}
 }
