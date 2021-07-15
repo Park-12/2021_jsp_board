@@ -65,7 +65,7 @@
 					</div>
 
 					<div class="btns mt-3">
-						<a href="../article/Modify?id=${article.id}" class="btn btn-link">
+						<a href="../article/modify?id=${article.id}" class="btn btn-link">
 							<span>
 								<i class="fas fa-edit"></i>
 							</span>
