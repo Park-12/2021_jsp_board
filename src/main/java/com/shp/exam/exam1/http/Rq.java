@@ -2,14 +2,12 @@ package com.shp.exam.exam1.http;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shp.exam.exam1.dto.Article;
 import com.shp.exam.exam1.util.Ut;
 
 import lombok.Getter;
@@ -95,7 +93,7 @@ public class Rq {
 		}
 		return paramValue;
 	}
-	
+
 	public int getIntParam(String paramName, int defaultValue) {
 		String paramValue = req.getParameter(paramName);
 
@@ -104,8 +102,7 @@ public class Rq {
 		}
 		try {
 			return Integer.parseInt(paramValue);
-		}
-		catch(NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			return defaultValue;
 		}
 	}
@@ -127,7 +124,7 @@ public class Rq {
 
 	public void setAttr(String attrName, Object attrValue) {
 		req.setAttribute(attrName, attrValue);
-		
+
 	}
 
 	public void replace(String msg, String redirectUri) {
@@ -135,6 +132,18 @@ public class Rq {
 		printf("alert('%s');\n", msg);
 		printf("location.replace('%s');\n", redirectUri);
 		println("</script>");
+	}
+
+	public void setSessionAttr(String attrName, String attrValue) {
+		req.getSession().setAttribute(attrName, attrValue);
+	}
+
+	public void removeSessionAttr(String attrName) {
+		req.getSession().removeAttribute(attrName);
+	}
+
+	public <T> T getSessionAttr(String attrName) {
+		return (T) req.getSession().getAttribute(attrName);
 	}
 
 }

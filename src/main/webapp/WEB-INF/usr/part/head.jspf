@@ -66,7 +66,7 @@
 						</a>
 					</li>
 					<li class="hover:text-red-500 hover:underline">
-						<a href="#" class="h-full flex items-center px-4">
+						<a href="../member/login" class="h-full flex items-center px-4">
 							<span><i class="fas fa-sign-in-alt"></i></span>
 							&nbsp;
 							<span>LOGIN</span>
